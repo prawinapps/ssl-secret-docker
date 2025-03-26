@@ -7,4 +7,6 @@ ARG SSL_CERTIFICATE
 # Set the environment variable for the certificate (optional)
 ENV SSL_CERTIFICATE=${SSL_CERTIFICATE}
 
+RUN echo "testing"
+
 RUN echo "$SSL_CERTIFICATE"
