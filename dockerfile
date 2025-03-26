@@ -1,4 +1,10 @@
 FROM amazoncorretto:17-alpine
 VOLUME /tmp 
-COPY target/order-service-0.0.1-SNAPSHOT.jar order-service.jar
-ENTRYPOINT ["java","-jar","/order-service.jar"]
+
+# Set the build argument for the SSL certificate
+ARG SSL_CERTIFICATE
+
+# Set the environment variable for the certificate (optional)
+ENV SSL_CERTIFICATE=${SSL_CERTIFICATE}
+
+RUN echo "$SSL_CERTIFICATE"
