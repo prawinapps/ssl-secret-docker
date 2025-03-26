@@ -1,0 +1,22 @@
+name: Deploy SSL Certificate
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Decode and Set SSL Certificate
+        run: |
+          # Decode the base64 certificate stored as a secret
+          echo "SSL_CERTIFICATE=${{ secrets.SSL_CERTIFICATE_BASE64 }}" | base64 --decode > $GITHUB_ENV
+
+      - name: Echo value
+        run: echo "$SSL_CERTIFICATE"
