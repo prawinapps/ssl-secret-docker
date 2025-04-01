@@ -14,19 +14,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      #- name: Decode and Set SSL Certificate
-      #run: echo "SSL_CERTIFICATE=${{ secrets.SSL_CERTIFICATE }}" >> $GITHUB_ENV
+      - name: Decode and Set SSL Certificate
+        run: echo "SSL_CERTIFICATE=${{ secrets.SSL_CERTIFICATE }}" >> $GITHUB_ENV
 
-      - uses: akiojin/decode-base64-github-action@v0.1.0
-        with:
-          base64: ${{ secrets.SSL_CERTIFICATE }}
-          environment: DECODED
-      - run: |
-          echo $DECODED
+      #- uses: akiojin/decode-base64-github-action@v0.1.0
+       # with:
+        #  base64: ${{ secrets.SSL_CERTIFICATE }}
+         # environment: DECODED
+      #- run: |
+       #   echo $DECODED
 
       #- name: Echo value
       # run: echo "$SSL_CERTIFICATE"
 
       - name: Build Docker Image
         run: |
-          docker build --build-arg SSL_CERTIFICATE="$DECODED" -t my-image:latest .
+          docker build --build-arg SSL_CERTIFICATE="SSL_CERTIFICATE" -t my-image:latest .
