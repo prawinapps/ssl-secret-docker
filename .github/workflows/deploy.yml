@@ -32,9 +32,9 @@ jobs:
       #- run: |
        #   echo $DECODED
 
-      - name: Echo value
-        run: echo "$SSL_CERTIFICATE"
+      #- name: Echo value
+        #run: echo "$SSL_CERTIFICATE"
 
-      - name: Build Docker Image
-        run: |
-          docker build --build-arg SSL_CERTIFICATE="$SSL_CERTIFICATE" -t my-image:latest .
+      #- name: Build Docker Image
+       # run: |
+         # docker build --build-arg SSL_CERTIFICATE="$SSL_CERTIFICATE" -t my-image:latest .
