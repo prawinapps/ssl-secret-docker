@@ -14,8 +14,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Decode and Set SSL Certificate
-        run: echo "SSL_CERTIFICATE=${{ secrets.SSL_CERTIFICATE }}" >> $GITHUB_ENV
+      - name: Set SSL Certificate
+        shell: bash
+        env:
+          SSL_CERTIFICATE: ${{ secrets.SSL_CERTIFICATE }}
+
+     # - name: Decode and Set SSL Certificate
+      #  run: echo "SSL_CERTIFICATE=${{ secrets.SSL_CERTIFICATE }}" >> $GITHUB_ENV
 
       #- uses: akiojin/decode-base64-github-action@v0.1.0
        # with:
