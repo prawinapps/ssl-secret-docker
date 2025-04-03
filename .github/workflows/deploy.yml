@@ -19,6 +19,7 @@ jobs:
         env:
           SSL_CERTIFICATE: ${{ secrets.SSL_CERTIFICATE }}
         run: |
+          echo "$SSL_CERTIFICATE"
           docker build --build-arg SSL_CERTIFICATE="$SSL_CERTIFICATE" -t my-image:latest . 
 
      # - name: Decode and Set SSL Certificate
