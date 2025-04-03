@@ -18,6 +18,8 @@ jobs:
         shell: bash
         env:
           SSL_CERTIFICATE: ${{ secrets.SSL_CERTIFICATE }}
+        run: |
+          docker build --build-arg SSL_CERTIFICATE="$SSL_CERTIFICATE" -t my-image:latest . 
 
      # - name: Decode and Set SSL Certificate
       #  run: echo "SSL_CERTIFICATE=${{ secrets.SSL_CERTIFICATE }}" >> $GITHUB_ENV
